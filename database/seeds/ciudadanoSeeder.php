@@ -16,10 +16,11 @@ class ciudadanoSeeder extends Seeder
         //
         $ciudadano = Ciudadanos::create([
         'nombre' => 'Diana',
-        'Apellido_paterno' => 'salgado',
-        'Apellido_materno' => 'alcala',
-        'sexo' => 'femenino',
-        'telefono' => '9612345678',
+        'Apellido_paterno' => 'Salgado',
+        'Apellido_materno' => 'Alcala',
+        'sexo' => 'Femenino',
+        'lada' => '961',
+        'telefono' => '6123456',
         'email' => 'dianasalgado@gmail.com',
         'distrito' => '1',
         'Municipio' => 'tuxtla gutierrez',        

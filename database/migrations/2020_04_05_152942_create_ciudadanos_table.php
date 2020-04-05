@@ -19,6 +19,7 @@ class CreateCiudadanosTable extends Migration
             $table->string('Apellido_paterno');
             $table->string('Apellido_materno');
             $table->string('sexo');
+            $table->string('lada');
             $table->string('telefono');            
             $table->string('email')->unique();
             $table->string('distrito');
