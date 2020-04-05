@@ -14,7 +14,7 @@ class UsersTablesSeeder extends Seeder
     public function run()
     {
         $administrador = User::create([
-            'name' => 'Darwin',
+            'name' => 'Darwin Perez Albores',
             'email' => 'perezalboresd@gmail.com',
             'password' => bcrypt('123456'),
             'tipouser' => 'administrador',
@@ -22,13 +22,5 @@ class UsersTablesSeeder extends Seeder
 
         $administrador->assignRole('admin');
 
-        $cliente = User::create([
-            'name' => 'Diana',
-            'email' => 'salgadoalcalad@gmail.com',
-            'password' => bcrypt('123123'),
-            'tipouser' => 'cliente',
-        ]);
-
-        $cliente->assignRole('client');
     }
 }
