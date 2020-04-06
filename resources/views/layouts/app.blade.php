@@ -43,6 +43,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">DENUNCIAS</a>
                         </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="{{ url('distritos-locales')}}">DISTRITACIONES LOCALES</a>
+                        </li>
                         @endhasrole
                     </ul>
 

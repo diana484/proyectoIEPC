@@ -4,21 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\User;
 use App\Distritacion;
 
-class UsuariosController extends Controller
+class DistritacionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
-        $users = User::all();
-        return view('administrador.index', compact('users'));
+        $distritos = Distritacion::all();
+        return view('distritaciones.index', compact('distritos'));
     }
 
     /**
@@ -29,8 +23,7 @@ class UsuariosController extends Controller
     public function create()
     {
         //
-        $distritos = Distritacion::distinct()->get(['clave_distrito']);
-        return view('administrador.create',compact('distritos'));
+        
     }
 
     /**
