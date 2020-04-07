@@ -2,13 +2,7 @@
 
 @section('content')
 
-<script type="text/javascript">
-  function municipio(){
-          var valormuni = document.getElementById("inputGroupSelect02").value;
-          alert(valormuni);
-  }
-  
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -50,23 +44,52 @@
                           
                           <div class="form-row btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
                             <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect02">Distrito</label>
-                                </div>
-                                    <select class="custom-select" id="inputGroupSelect02" onchange="municipio();"> 
-                                      @foreach($distritos as $distrito)
-                                        <option style="text-transform: capitalize;" value="{{ $distrito->clave_distrito }}">{{ $distrito->clave_distrito }}</option> 
-                                      @endforeach
-                                    </select>
-                            </div> 
-                             
-                            <div class="input-group">
-                              <div class="input-group-prepend">
-                                  <label class="input-group-text" for="inputGroupSelect03">Municipio</label>
+                              <div class="form-group">
+                                <label for="country">Select Country:</label>
+                                <select name="country" class="form-control" style="width:250px">
+                                    <option value="">--- Select Country ---</option>
+                                    @foreach ($countries as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                               </div>
-                              
-                                 
+                              <div class="form-group">
+                                  <label for="state">Select State:</label>
+                                  <select name="states" class="form-control"style="width:250px">
+                                  <option>--State--</option>
+                                  </select>
                               </div> 
+                            </div> 
+
+                            <script type="text/javascript">
+                              jQuery(document).ready(function ()
+                              {
+                                      jQuery('select[name="country"]').on('change',function(){
+                                         var countryID = jQuery(this).val();
+                                         if(countryID)
+                                         {
+                                            jQuery.ajax({
+                                               url : 'create/towns/'+countryID,
+                                               type : 'GET',
+                                               dataType : 'json',
+                                               success:function(data)
+                                               {
+                                                  console.log(data);
+                                                  jQuery('select[name="states"]').empty();
+                                                  jQuery.each(data, function(key,value){
+                                                     $('select[name="states"]').append('<option value="'+ key +'">'+ value +'</option>');
+                                                  });
+                                               }
+                                            });
+                                         }
+                                         else
+                                         {
+                                            $('select[name="states"]').empty();
+                                         }
+                                      });
+                              });
+                              </script>
+                             
 
                               
                           </div>

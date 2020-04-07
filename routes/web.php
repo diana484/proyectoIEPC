@@ -20,4 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('usuarios', 'UsuariosController');
-Route::resource('distritos-locales', 'DistritacionController');
+Route::resource('create/towns/{id}','UsuariosController@getTowns');

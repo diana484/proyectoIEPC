@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
-use App\Distritacion;
+use App\States;
+use App\Towns;
+use DB;
 
 class UsuariosController extends Controller
 {
@@ -29,9 +31,16 @@ class UsuariosController extends Controller
     public function create()
     {
         //
-        $distritos = Distritacion::distinct()->get(['clave_distrito']);
-        return view('administrador.create',compact('distritos'));
+     
+        $countries = States::pluck('name','id');
+        return view('administrador.create',compact('countries'));
     }
+
+    public function getTowns($id){
+        $states = Towns::where('state_id',$id)->get();
+        return json($states);
+    }
+   
 
     /**
      * Store a newly created resource in storage.

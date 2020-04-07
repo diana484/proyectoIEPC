@@ -87,6 +87,9 @@
 
         <main class="py-4">
             @yield('content')
+
+            {!! Html::script('js/jquery-2.1.0.min.js') !!}
+            {!! Html::script('js/dropdown.js') !!}
         </main>
     </div>
 </body>
